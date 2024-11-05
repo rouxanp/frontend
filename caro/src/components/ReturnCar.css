@@ -1,0 +1,126 @@
+/* Main container styling for ReturnCar */
+.mt-4 {
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mt-4 h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #af40ff, #5b42f3, #00ddeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-animation 5s infinite linear;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Wave effect styling */
+.wave-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.wave {
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    opacity: 0.6;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    border-radius: 50%;
+    animation: wave 55s infinite linear;
+}
+
+.wave:nth-child(1) { top: -50%; left: -30%; animation-duration: 60s; }
+.wave:nth-child(2) { top: 20%; left: 40%; animation-duration: 50s; }
+.wave:nth-child(3) { top: 70%; left: -20%; animation-duration: 45s; }
+
+/* Map and form styling */
+.map-container {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.form-control {
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button.w-100 {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    border-radius: 8px;
+    background-color: #008bf8;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button.w-100:hover {
+    background-color: #5b42f3;
+}
+
+  /* Wave effect styling */
+  .wave-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+  }
+  
+  .wave {
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    opacity: 0.6;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    border-radius: 50%;
+    animation: wave 55s infinite linear;
+  }
+  
+  .wave:nth-child(1) { top: -50%; left: -30%; animation-duration: 60s; }
+  .wave:nth-child(2) { top: 20%; left: 40%; animation-duration: 50s; }
+  .wave:nth-child(3) { top: 70%; left: -20%; animation-duration: 45s; }
+  
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

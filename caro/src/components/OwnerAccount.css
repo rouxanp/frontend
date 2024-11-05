@@ -1,0 +1,123 @@
+/* Main container styling for the account page */
+.owner-account-container {
+    padding: 2rem;
+    max-width: 1300px;
+    width: 100%;
+    
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Glassmorphism effect for the profile container */
+.profile-container-owner {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    padding: 2rem;
+    padding-top: 4rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    height: fit-content ;
+}
+
+/* h2 gradient mask */
+.owner-account-container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #af40ff, #5b42f3, #00ddeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-animation 5s infinite linear;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Profile information styling */
+.profile-info-owner {
+    font-size: 1.4rem;
+    font-weight: 400;
+    display: flex;
+    align-items: left;
+    margin-bottom: 1rem;
+    color:#5b42f3;
+    
+}
+
+.profile-info-owner-icon {
+    color: #5b42f3;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Button styling */
+.edit-profile-btn {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.5rem 2rem;
+    border-radius: 8px;
+    background-color: #5b42f3;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #af40ff;
+}
+
+/* Wave effect styling */
+.wave-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.wave {
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    opacity: 0.6;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    border-radius: 50%;
+    animation: wave 55s infinite linear;
+}
+
+.wave:nth-child(1) { top: -50%; left: -30%; animation-duration: 60s; }
+.wave:nth-child(2) { top: 20%; left: 40%; animation-duration: 50s; }
+.wave:nth-child(3) { top: 70%; left: -20%; animation-duration: 45s; }
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-info-owner input{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+}

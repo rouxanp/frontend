@@ -1,0 +1,141 @@
+/* Main container styling for OwnerDashboard */
+.od-dashboard-container {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    overflow-y: auto;
+  }
+  
+  .od-title {
+    text-align: left;
+    margin-left: 3.2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #af40ff, #5b42f3, #00ddeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-animation 5s infinite linear;
+  }
+  
+  /* Car list grid layout */
+  .od-car-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 20px;
+  }
+  
+  /* Card styling */
+  .od-card {
+    width: 100%;
+    max-width: 260px;
+    height: fit-content;
+    border-radius: 20px;
+    
+    position: relative;
+    padding: 1.8rem;
+    
+    transition: 0.5s ease-out;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .od-card-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .od-card-details {
+    color: black;
+    height: 100%;
+    gap: 0.5em;
+    display: grid;
+  }
+  
+  
+  .od-card-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    
+  }
+  
+  .od-card-button {
+    width: 45%;
+    border-radius: 1rem;
+    border: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    
+  }
+  
+  .od-edit-button {
+    background-color: #007bff;
+  }
+  
+  .od-delete-button {
+    background-color: red;
+  }
+  
+  .od-save-button {
+    background-color: #28a745;
+  }
+  
+  .od-text-body {
+    color: #000;
+
+  }
+  
+  .od-text-title {
+    font-weight: bold;
+  }
+  
+  /* Wave effect styling */
+.wave-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.wave {
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    opacity: 0.6;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    border-radius: 50%;
+    animation: wave 55s infinite linear;
+}
+
+.wave:nth-child(1) { top: -50%; left: -30%; animation-duration: 60s; }
+.wave:nth-child(2) { top: 20%; left: 40%; animation-duration: 50s; }
+.wave:nth-child(3) { top: 70%; left: -20%; animation-duration: 45s; }

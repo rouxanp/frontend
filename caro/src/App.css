@@ -1,0 +1,21 @@
+/* Global and Navbar styling */
+
+.dashboard-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dashboard-container h2 {
+  font-size: 2rem;
+  color: #0047FF;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  z-index: 0; 
+  
+}

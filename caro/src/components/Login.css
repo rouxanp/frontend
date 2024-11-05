@@ -1,0 +1,71 @@
+
+
+  .background-container {
+    
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10vh;
+    padding-top: 10rem;
+  }
+  
+  .wave {
+    position: absolute;
+    width: 50vw;
+    height: 700px;
+    opacity: 0.5;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+    border-radius: 40%;
+    animation: wave 55s infinite linear;
+  }
+  
+  /* Adjust wave positions for layered effect */
+  .wave:nth-child(1) {
+    top: -40%;
+    left: -30%;
+    animation-duration: 60s;
+  }
+  
+  .wave:nth-child(2) {
+    top: 20%;
+    left: 40%;
+    animation-duration: 50s;
+  }
+  
+  .wave:nth-child(3) {
+    top: 60%;
+    left: -20%;
+    animation-duration: 45s;
+  }
+  
+  /* Wave rotation animation */
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Login form styling */
+  .login-container {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    
+    max-width: 400px;
+    width: 100%;
+    z-index: 10;
+    margin-top: -10vh !important;
+  }
+
+  
