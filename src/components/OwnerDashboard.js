@@ -5,7 +5,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import NavBar from './NavBar';
 import axios from 'axios';
 import './OwnerDashboard.css';
-import L from 'leaflet';
 
 import car1 from '../assets/car1.png';
 import car2 from '../assets/car2.png';
@@ -30,16 +29,20 @@ const OwnerDashboard = () => {
         },
       });
 
-      setCars(response.data.cars); 
+      if (response && response.data) {
+        setCars(response.data.cars);
+      } else {
+        console.error('Error: No car data found in response');
+      }
     } catch (error) {
-      console.error('Error fetching cars:', error);
+      console.error('Error fetching cars:', error.response?.data?.message || error.message);
     }
   };
 
   const deleteCar = async (carID) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5001/api/cars/${carID}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cars/${carID}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,7 +50,7 @@ const OwnerDashboard = () => {
 
       setCars(cars.filter((car) => car.carID !== carID));
     } catch (error) {
-      console.error('Error deleting car:', error);
+      console.error('Error deleting car:', error.response?.data?.message || error.message);
     }
   };
 
@@ -63,17 +66,16 @@ const OwnerDashboard = () => {
   const saveCarChanges = async (carID) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5001/api/cars/${carID}`, editData, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/cars/${carID}`, editData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      // Update the cars state with the edited car
       setCars(cars.map((car) => (car.carID === carID ? { ...car, ...editData } : car)));
       setEditMode(null); // Exit edit mode
     } catch (error) {
-      console.error('Error updating car:', error);
+      console.error('Error updating car:', error.response?.data?.message || error.message);
     }
   };
 
@@ -97,18 +99,25 @@ const OwnerDashboard = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
-              {cars.map((car) => (
-                <Marker
-                  key={car.carID}
-                  position={JSON.parse(car.location)}
-                >
-                  <Popup>
-                    <strong>{car.make} {car.model}</strong> {car.rented ? "🔴" : "🟢"} <br />
-                    R{car.pricePerDay}/day <br />
-                    Mileage: {car.mileage} km
-                  </Popup>
-                </Marker>
-              ))}
+              {cars.map((car) => {
+                let position;
+                try {
+                  position = JSON.parse(car.location);
+                } catch (error) {
+                  console.error('Error parsing car location:', error);
+                  return null;
+                }
+
+                return (
+                  <Marker key={car.carID} position={position}>
+                    <Popup>
+                      <strong>{car.make} {car.model}</strong> {car.rented ? "🔴" : "🟢"} <br />
+                      R{car.pricePerDay}/day <br />
+                      Mileage: {car.mileage} km
+                    </Popup>
+                  </Marker>
+                );
+              })}
             </MapContainer>
           </Col>
 
@@ -125,39 +134,39 @@ const OwnerDashboard = () => {
                         <>
                           <input
                             name="make"
-                            value={editData.make}
+                            value={editData.make || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
                           <input
                             name="model"
-                            value={editData.model}
+                            value={editData.model || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
                           <input
                             name="transmission"
-                            value={editData.transmission}
+                            value={editData.transmission || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
                           <input
                             name="pricePerDay"
                             type="number"
-                            value={editData.pricePerDay}
+                            value={editData.pricePerDay || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
                           <input
                             name="mileage"
                             type="number"
-                            value={editData.mileage}
+                            value={editData.mileage || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
                           <input
                             name="registrationNumber"
-                            value={editData.registrationNumber}
+                            value={editData.registrationNumber || ''}
                             onChange={handleInputChange}
                             className="od-card-input"
                           />
@@ -201,7 +210,6 @@ const OwnerDashboard = () => {
           </Col>
         </Row>
       </Container>
-      {/* Wave Background Section with Overlay */}
       <div className="wave-section">
         <div className="wave"></div>
         <div className="wave"></div>

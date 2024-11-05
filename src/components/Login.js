@@ -5,7 +5,6 @@ import WelcomeBar from './WelcomeBar';
 import axios from 'axios';
 import './Login.css';
 
-
 function Login() {
   const [view, setView] = useState('login');
   const [email, setEmail] = useState('');
@@ -20,28 +19,33 @@ function Login() {
         password,
       });
 
-      // Store token and user information
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      // Ensure response and response.data exist before accessing them
+      if (response && response.data) {
+        // Store token and user information
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      // Redirect based on user type
-      if (response.data.user.userType === 'driver') {
-        navigate('/driver-dashboard');
-        window.location.reload();
-      } else if (response.data.user.userType === 'owner') {
-        navigate('/owner-dashboard');
-        window.location.reload();
+        // Redirect based on user type
+        if (response.data.user.userType === 'driver') {
+          navigate('/driver-dashboard');
+          window.location.reload();
+        } else if (response.data.user.userType === 'owner') {
+          navigate('/owner-dashboard');
+          window.location.reload();
+        }
+      } else {
+        console.error('Error: Login response is missing data');
       }
     } catch (error) {
-      console.error('Error during login:', error.response.data.message);
+      console.error('Error during login:', error.response?.data?.message || 'Login failed');
     }
   };
 
-  const switchToSignUp = () => setView('signup');
-
-  if (view === 'signup') {
+  // Handle switching to the Sign Up view
+  const switchToSignUp = () => {
+    setView('signup');
     navigate('/signup');
-  }
+  };
 
   return (
     <>
@@ -51,8 +55,6 @@ function Login() {
         <div className="wave"></div>
         <div className="wave"></div>
         <div className="wave"></div>
-        
-        
 
         {/* Login Form Container */}
         <Container className="login-container mt-5 pt-5 p-4 rounded shadow col-6">
