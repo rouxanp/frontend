@@ -15,7 +15,7 @@ function DriverAccount() {
     const fetchUserInfo = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5001/api/users/me', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -24,7 +24,7 @@ function DriverAccount() {
         setEditData(response.data); // Initialize editData with the user's current info
 
         // Fetch driver-specific bookings
-        const bookingsResponse = await axios.get('http://localhost:5001/api/bookings/driver', {
+        const bookingsResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/driver`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -55,7 +55,7 @@ function DriverAccount() {
   const handleSaveClick = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5001/api/users/update', editData, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/users/update`, editData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

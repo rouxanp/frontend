@@ -24,7 +24,7 @@ const OwnerDashboard = () => {
   const fetchCars = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5001/api/cars', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cars`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

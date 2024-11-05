@@ -55,7 +55,7 @@ function NearbyCars() {
   const fetchNearbyCars = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5001/api/cars/nearby', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cars/nearby`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -82,7 +82,7 @@ function NearbyCars() {
       const startDate = localStorage.getItem('startDate');
       const endDate = localStorage.getItem('endDate');
       const response = await axios.post(
-        'http://localhost:5001/api/bookings/create',
+        `${process.env.REACT_APP_API_URL}/api/bookings/create`,
         { carID, startDate, endDate },
         {
           headers: {

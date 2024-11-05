@@ -41,7 +41,7 @@ function AddCar() {
       // Make API request to add a car
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5001/api/cars/add',
+        `${process.env.REACT_APP_API_URL}/api/cars/add`,
         { ...carDetails, location },
         {
           headers: {

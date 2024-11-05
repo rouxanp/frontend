@@ -14,7 +14,7 @@ function OwnerAccount() {
     const fetchUserInfo = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await axios.get('http://localhost:5001/api/users/me', {
+        const userResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,7 +40,7 @@ function OwnerAccount() {
   const handleSaveClick = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('http://localhost:5001/api/users/update', editData, {
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/users/update`, editData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

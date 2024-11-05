@@ -22,7 +22,7 @@ function DriverBookings() {
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5001/api/bookings/driver', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/driver`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
