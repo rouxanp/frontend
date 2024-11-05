@@ -14,7 +14,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+      // Use hardcoded Heroku URL for login API
+      const response = await axios.post("https://carocommutebackend-e105b94578b8.herokuapp.com/api/auth/login", {
         email,
         password,
       });

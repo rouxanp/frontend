@@ -64,7 +64,7 @@ function App() {
             )}
 
             {/* Default Redirect based on user type */}
-            <Route
+            {/* <Route
               path="/dashboard"
               element={
                 userType === 'owner' ? (
@@ -73,7 +73,7 @@ function App() {
                   <Navigate to="/driver-dashboard" />
                 )
               }
-            />
+            /> */}
           </>
         )}
       </Routes>

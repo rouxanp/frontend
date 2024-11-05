@@ -23,7 +23,7 @@ const OwnerDashboard = () => {
   const fetchCars = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cars`, {
+      const response = await axios.get("https://carocommutebackend-e105b94578b8.herokuapp.com/api/cars", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ const OwnerDashboard = () => {
   const deleteCar = async (carID) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cars/${carID}`, {
+      await axios.delete("https://carocommutebackend-e105b94578b8.herokuapp.com/api/cars/${carID}", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -66,7 +66,7 @@ const OwnerDashboard = () => {
   const saveCarChanges = async (carID) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/cars/${carID}`, editData, {
+      await axios.put("https://carocommutebackend-e105b94578b8.herokuapp.com/api/cars/${carID}", editData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
