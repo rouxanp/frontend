@@ -12,6 +12,7 @@
     margin: auto;
     margin-top: 20px;
     overflow-y: auto;
+    height: 80vh;
   }
   
   .od-title {
